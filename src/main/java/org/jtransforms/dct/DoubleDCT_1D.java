@@ -75,17 +75,21 @@ public class DoubleDCT_1D
 
     private boolean useLargeArrays;
 
+    public DoubleDCT_1D(long n) {
+        this (n, false);
+    }
+
     /**
      * Creates new instance of DoubleDCT_1D.
      * 
      * @param n size of data
      */
-    public DoubleDCT_1D(long n)
+    public DoubleDCT_1D(long n, boolean pForceLargeArrays)
     {
         if (n < 1) {
             throw new IllegalArgumentException("n must be greater than 0");
         }
-        this.useLargeArrays = n >= ConcurrencyUtils.getLargeArraysBeginN();
+        this.useLargeArrays = pForceLargeArrays ? true : n >= ConcurrencyUtils.getLargeArraysBeginN();
 
         if (!useLargeArrays) {
             if (n > (1 << 28)) {
