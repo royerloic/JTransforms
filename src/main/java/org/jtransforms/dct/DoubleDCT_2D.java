@@ -58,13 +58,18 @@ public class DoubleDCT_2D {
 
     private boolean useThreads = false;
 
+
+    public DoubleDCT_2D(long rows, long columns) {
+        this (rows, columns, false);
+    }
+
     /**
      * Creates new instance of DoubleDCT_2D.
      * 
      * @param rows number of rows
      * @param columns number of columns
      */
-    public DoubleDCT_2D(long rows, long columns) {
+    public DoubleDCT_2D(long rows, long columns, boolean pForceLargeArrays) {
         if (rows <= 1 || columns <= 1) {
             throw new IllegalArgumentException("rows and columns must be greater than 1");
         }
@@ -82,11 +87,11 @@ public class DoubleDCT_2D {
         if (rows * columns > (1 << 28)) {
             ConcurrencyUtils.setLargeArraysBeginN(Math.min(rows, columns));
         }
-        dctRows = new DoubleDCT_1D(rows);
+        dctRows = new DoubleDCT_1D(rows, pForceLargeArrays);
         if (rows == columns) {
             dctColumns = dctRows;
         } else {
-            dctColumns = new DoubleDCT_1D(columns);
+            dctColumns = new DoubleDCT_1D(columns, pForceLargeArrays);
         }
         ConcurrencyUtils.setLargeArraysBeginN(largeArraysBenginN);
     }

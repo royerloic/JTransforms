@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.wendykierp</groupId>
     <artifactId>JTransforms</artifactId>
-    <version>3.1-SNAPSHOT</version>
+    <version>3.1.2-RH</version>
     <packaging>jar</packaging>
     
     <url>https://github.com/wendykierp/JTransforms</url> 
@@ -42,7 +42,7 @@
         <dependency>
             <groupId>pl.edu.icm</groupId>
             <artifactId>JLargeArrays</artifactId>
-            <version>1.2</version>
+            <version>1.3-RH</version>
         </dependency>
     </dependencies>
    
